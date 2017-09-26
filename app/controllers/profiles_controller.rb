@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
     def new
+        # form where a user can fill out their own profile.
         @user = User.find( params[:user_id] )
         @profile = Profile.new
     end
@@ -14,6 +15,12 @@ class ProfilesController < ApplicationController
             render action: :new 
         end
     end
+    
+    def edit
+        @user = User.find( params[:user_id] )
+        @profile = @user.profile
+    end
+    
     
     private
     def profile_params
